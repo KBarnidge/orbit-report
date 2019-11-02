@@ -1,0 +1,23 @@
+<p>orbit-list works!</p>
+<h3>Orbit Report</h3>
+<table>
+   <tr class="header-row">
+      <th class="sortable" (click) = "sort('name')">Name</th>
+      <th class="sortable"(click) = "sort('type')">Type</th>
+      <th>Operational</th>
+      <th>Orbit Type</th>
+      <th>Launch Date</th>
+   </tr>
+   <!-- TODO: put <tr *ngFor=""></tr> here -->
+   <tr *ngFor= "let Satellite of satellites">
+       <td>{{Satellite.name}}</td>
+       <td *ngIf= "Satellite.shouldShowWarning() === false; else warning">{{Satellite.type}}</td>
+       <ng-template #warning>
+        <td class = "warning">{{Satellite.type}}</td>
+        </ng-template>
+       <td>{{Satellite.operational}}</td>
+       <td>{{Satellite.orbitType}}</td>
+       <td>{{Satellite.launchDate}}</td>
+    </tr>
+</table>
+
