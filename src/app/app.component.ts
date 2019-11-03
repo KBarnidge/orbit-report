@@ -28,11 +28,13 @@ export class AppComponent {
 
             this.sourceList.push(newSatellite)
           }
+
+          this.displayList = this.sourceList.slice(0);
        }.bind(this));
     }.bind(this));
- 
+   }
 
-     function search(searchTerm: string): void {
+     search(searchTerm: string): void {
       let matchingSatellites: Satellite[] = [];
       searchTerm = searchTerm.toLowerCase();
       for(let i=0; i < this.sourceList.length; i++) {
@@ -41,10 +43,8 @@ export class AppComponent {
             matchingSatellites.push(this.sourceList[i]);
          }
       }
-      // assign this.displayList to be the the array of matching satellites
-      // this will cause Angular to re-make the table, but now only containing matches
+
       this.displayList = matchingSatellites;
    }
 
  }
-}
